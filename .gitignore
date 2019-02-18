@@ -10,6 +10,8 @@ user_guide_src/cilexer/build/*
 user_guide_src/cilexer/dist/*
 user_guide_src/cilexer/pycilexer.egg-info/*
 
+.idea
+
 #codeigniter 3
 application/logs/*
 !application/logs/index.html
