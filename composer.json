@@ -1,0 +1,23 @@
+{
+    "name": "opensite/http",
+    "description": "curl library for php",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "6.3.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "6.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lucky.li",
+            "email": "lucky9303@163.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Opensite\\": "src/"
+        }
+    }
+}
