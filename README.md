@@ -27,7 +27,7 @@ Http::HTTPRequest('GET',['name' => 'test']);
 
 * POST 请求
 ```
-Http::HTTPRequest('GET',['name' => 'test']);
+Http::HTTPRequest('POST',['name' => 'test']);
 ```
 
 
