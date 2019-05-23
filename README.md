@@ -19,15 +19,22 @@ $ composer require opensite/http
 
 use opensite\http;
 
+# 设置debug调试配置 及 verify https验证
 
-# GET 请求
+Http::setDefaultConfig(false,false);
 
-Http::HTTPRequest('GET',['name' => 'test']);
+# 设置header 头
+
+Http::setHeaders(array $params);
+
+# GET 请求‚
+
+Http::HTTPRequest('GET',array $params);
 
 
-# POST 请求
+# POST 请求‚‚
 
-Http::HTTPRequest('POST',['name' => 'test']);
+Http::HTTPRequest('POST',array $params);
 
 ```
 

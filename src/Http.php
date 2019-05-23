@@ -44,6 +44,15 @@ class Http
      * @var bool 是否需要http基础认证
      */
     protected static $auth = false;
+    /**
+     * 相关调试及验证配置
+     *
+     * @var array
+     */
+    protected static $config = [
+        'debug' => true,
+        'verify' => false
+    ];
 
     /**
      * 设置access_token
@@ -52,6 +61,20 @@ class Http
     public static function setAccessToken($access_token = '')
     {
         self::$access_token = $access_token;
+    }
+    /**
+     * 设置 debug,及verify 配置
+     */
+    public static function setDefaultConfig($debug = true,$verify = false)
+    {
+        self::$config = compact('debug','verify');
+    }
+    /**
+     * 设置 debug,及verify 配置
+     */
+    public static function getDefaultConfig($debug = true,$verify = false)
+    {
+        return self::$config;
     }
 
     /**
@@ -98,7 +121,7 @@ class Http
      */
     protected static function get($url,$options = [])
     {
-        return self::request($url,'GET',['body' => $options]);
+        return self::request($url,'GET',['query' => $options]);
     }
 
     /**
@@ -165,6 +188,11 @@ class Http
         if (self::$headers){
             $options = array_merge(['headers' => self::$headers],$options);
         }
+        array_merge($options,self::$config);
+        
+        if(self::getHeaders()){
+            $options['headers'] = self::getHeaders();
+        }
         $response = self::getClient()->request($method,$url,$options);
         return $response;
     }
@@ -185,7 +213,6 @@ class Http
             return false;
         }
         $contents = $body->getContents();
-
         $result = json_decode($contents);
 
         if (json_last_error() != JSON_ERROR_NONE){
@@ -216,5 +243,4 @@ class Http
         self::$client = $client;
         return self::$client;
     }
-
 }
