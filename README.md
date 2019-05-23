@@ -14,20 +14,21 @@ $ composer require opensite/http
 ```
 
 ### Usage
+```
+<?php
 
-* 引入类
-```
-use http;
-```
+use opensite\http;
 
-* GET 请求
-```
+
+# GET 请求
+
 Http::HTTPRequest('GET',['name' => 'test']);
-```
 
-* POST 请求
-```
+
+# POST 请求
+
 Http::HTTPRequest('POST',['name' => 'test']);
+
 ```
 
 
